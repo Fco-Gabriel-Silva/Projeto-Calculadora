@@ -4,7 +4,62 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calculadora</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./css/index.css" />
+
     <script defer type="module" src="index.js"></script>
   </head>
-  <body></body>
+  <body>
+    <main>
+      <section class="visor">
+        <input
+          type="text"
+          value="0"
+          aria-label="Visor da calculadora"
+          aria-live="polite"
+          readonly
+        />
+      </section>
+
+      <section class="teclas">
+        <ul class="linha-teclas">
+          <li><button type="button" class="tecla acao">C</button></li>
+          <li><button type="button" class="tecla acao">( )</button></li>
+          <li><button type="button" class="tecla acao">%</button></li>
+          <li><button type="button" class="tecla operacao">/</button></li>
+        </ul>
+        <ul class="linha-teclas">
+          <li><button type="button" class="tecla">7</button></li>
+          <li><button type="button" class="tecla">8</button></li>
+          <li><button type="button" class="tecla">9</button></li>
+          <li><button type="button" class="tecla operacao">*</button></li>
+        </ul>
+        <ul class="linha-teclas">
+          <li><button type="button" class="tecla">4</button></li>
+          <li><button type="button" class="tecla">5</button></li>
+          <li><button type="button" class="tecla">6</button></li>
+          <li><button type="button" class="tecla operacao">-</button></li>
+        </ul>
+        <ul class="linha-teclas">
+          <li><button type="button" class="tecla">1</button></li>
+          <li><button type="button" class="tecla">2</button></li>
+          <li><button type="button" class="tecla">3</button></li>
+          <li><button type="button" class="tecla operacao">+</button></li>
+        </ul>
+        <ul class="linha-teclas">
+          <li><button type="button" class="tecla">0</button></li>
+          <li><button type="button" class="tecla">.</button></li>
+          <li><button type="button" class="tecla acao">DEL</button></li>
+          <li><button type="button" class="tecla igual">=</button></li>
+        </ul>
+      </section>
+    </main>
+  </body>
 </html>

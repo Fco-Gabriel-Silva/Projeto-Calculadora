@@ -1,33 +1,23 @@
 export const separarExpressao = (valores) => {
-  if (valores.includes("*")) {
-    const indexMultiplicacao = valores.indexOf("*");
-    const indexInicio = indexMultiplicacao - 1;
-    const indexFim = indexMultiplicacao + 2;
-    const expressao = valores.slice(indexInicio, indexFim);
-    return { expressao, indexInicio, indexFim };
+  const indexMultiplicacao =
+    valores.indexOf("*") !== -1 ? valores.indexOf("*") : Infinity;
+  const indexDivisao =
+    valores.indexOf("/") !== -1 ? valores.indexOf("/") : Infinity;
+  const indexSoma =
+    valores.indexOf("+") !== -1 ? valores.indexOf("+") : Infinity;
+  const indexSubtracao =
+    valores.indexOf("-") !== -1 ? valores.indexOf("-") : Infinity;
+
+  let indexOriginal;
+
+  if (indexMultiplicacao !== Infinity || indexDivisao !== Infinity) {
+    indexOriginal = Math.min(indexMultiplicacao, indexDivisao);
+  } else if (indexSoma !== Infinity || indexSubtracao !== Infinity) {
+    indexOriginal = Math.min(indexSoma, indexSubtracao);
   }
 
-  if (valores.includes("/")) {
-    const indexDivisao = valores.indexOf("/");
-    const indexInicio = indexDivisao - 1;
-    const indexFim = indexDivisao + 2;
-    const expressao = valores.slice(indexInicio, indexFim);
-    return { expressao, indexInicio, indexFim };
-  }
-
-  if (valores.includes("+")) {
-    const indexSoma = valores.indexOf("+");
-    const indexInicio = indexSoma - 1;
-    const indexFim = indexSoma + 2;
-    const expressao = valores.slice(indexInicio, indexFim);
-    return { expressao, indexInicio, indexFim };
-  }
-
-  if (valores.includes("-")) {
-    const indexSubtracao = valores.indexOf("-");
-    const indexInicio = indexSubtracao - 1;
-    const indexFim = indexSubtracao + 2;
-    const expressao = valores.slice(indexInicio, indexFim);
-    return { expressao, indexInicio, indexFim };
-  }
+  const indexInicio = indexOriginal - 1;
+  const indexFim = indexOriginal + 2;
+  const expressao = valores.slice(indexInicio, indexFim);
+  return { expressao, operacao: expressao[1], indexInicio, indexFim };
 };

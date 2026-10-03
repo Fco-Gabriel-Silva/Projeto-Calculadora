@@ -1,25 +1,40 @@
+import { separarExpressao } from "../utils/separarExpressao.js";
+import { Divisao } from "./divisao.js";
+import { Multiplicacao } from "./multiplicacao.js";
+import { Soma } from "./soma.js";
+import { Subtracao } from "./subtracao.js";
+
 export class Calculadora {
-  valor1;
-  valor2;
-  operacao;
+  calcular(expressao) {
+    let solucaoExpressao = [...expressao];
 
-  somar() {
-    const soma = this.valor1 + this.valor2;
-    return soma;
-  }
+    while (solucaoExpressao.length !== 1) {
+      const { expressao, operacao, indexInicio } =
+        separarExpressao(solucaoExpressao);
 
-  subtrair() {
-    const subtracao = this.valor1 - this.valor2;
-    return subtracao;
-  }
+      let resultado;
 
-  multiplicar() {
-    const multiplicacao = this.valor1 * this.valor2;
-    return multiplicacao;
-  }
+      switch (operacao) {
+        case "*":
+          resultado = new Multiplicacao(expressao).executar();
+          break;
 
-  dividir() {
-    const divisao = this.valor1 / this.valor2;
-    return divisao;
+        case "/":
+          resultado = new Divisao(expressao).executar();
+          break;
+
+        case "+":
+          resultado = new Soma(expressao).executar();
+          break;
+
+        case "-":
+          resultado = new Subtracao(expressao).executar();
+          break;
+      }
+
+      solucaoExpressao.splice(indexInicio, 3, resultado);
+    }
+
+    return Number(solucaoExpressao);
   }
 }

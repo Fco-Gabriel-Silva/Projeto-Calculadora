@@ -35,6 +35,6 @@ export class Calculadora {
       solucaoExpressao.splice(indexInicio, 3, resultado);
     }
 
-    return Number(solucaoExpressao);
+    return String(solucaoExpressao);
   }
 }

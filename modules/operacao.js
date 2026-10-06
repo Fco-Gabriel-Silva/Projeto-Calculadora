@@ -3,8 +3,8 @@ export class Operacao {
   valor2;
 
   constructor(expressao) {
-    this.valor1 = expressao[0];
-    this.valor2 = expressao[2];
+    this.valor1 = Number(expressao[0]);
+    this.valor2 = Number(expressao[2]);
   }
 
   executar() {}

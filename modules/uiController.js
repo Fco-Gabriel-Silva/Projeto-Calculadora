@@ -1,3 +1,5 @@
+import { formatarDigitos } from "../utils/formatarDigitos.js";
+
 export class UiController {
   calculadora;
   valoresDigitados;
@@ -19,7 +21,8 @@ export class UiController {
 
   tratarClique(valor) {
     if (valor === "=") {
-      const resultado = this.calculadora.calcular(this.valoresDigitados);
+      const expressaoFormatada = formatarDigitos(this.valoresDigitados);
+      const resultado = this.calculadora.calcular(expressaoFormatada);
       this.valoresDigitados = [resultado];
       return;
     }
@@ -33,7 +36,6 @@ export class UiController {
     }
 
     this.valoresDigitados.push(valor);
-    this.valoresDigitados;
     return;
   }
 

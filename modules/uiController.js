@@ -14,7 +14,6 @@ export class UiController {
   }
 
   atualizarVisor() {
-    console.log(this.valoresDigitados);
     const digitosFormatados = this.valoresDigitados.join("") || "0";
     this.input.value = digitosFormatados;
   }
